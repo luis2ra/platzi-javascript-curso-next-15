@@ -44,7 +44,7 @@ export default async function ExpenseTracker() {
         </FormControl>
         <FormControl>
           <FormLabel>Valor</FormLabel>
-          <Input required type="number" name="Amount" />
+          <Input required type="number" name="amount" />
         </FormControl>
 
         <Button type="submit">Agregar</Button>

@@ -1,5 +1,6 @@
 "use server"
 
+import { revalidatePath } from "next/cache"
 import { sql } from "../db"
 
 type Expense = {
@@ -28,6 +29,8 @@ export async function addExpense(data: FormData) {
     VALUES
       (${name.toString()}, ${amount})
     `
+
+  revalidatePath("/expense-tracker")
 }
 
 // Delete an expense
@@ -38,6 +41,8 @@ export async function deleteExpense(data: FormData) {
     DELETE FROM expenses
     WHERE id = ${id}
   `
+
+  revalidatePath("/expense-tracker")
 }
 
 // Get total expenses for the current month

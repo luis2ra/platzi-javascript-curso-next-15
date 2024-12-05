@@ -42,14 +42,14 @@ Crearemos en PostgreSQL:
 
    Sal del intérprete con `\q`.
 
-Con esto, la URL PostreSQL de conexión debería verse como
+Si prefieres usar una GUI, puedes probar [pgweb](http://sosedoff.github.io/pgweb/)
+
+La URL PostreSQL de conexión debería verse como
 
 ```
-postgresql://<username>:<password>@localhost:5432/expense_tracker
+postgresql://<username>:<password>@localhost:5432
 ```
 
 > Si no has cambiado tu `password` nunca, será el mismo `username`.
 
-Usa el valor de arriba para actualizar el valor de `POSTGRESQL_DATABASE_URL` en tu `.env`
-
-Si prefieres usar una GUI, puedes probar [pgweb](http://sosedoff.github.io/pgweb/)
+Usa el valor de arriba para actualizar el valor de `POSTGRESQL_ENDPOINT` en tu `.env`
