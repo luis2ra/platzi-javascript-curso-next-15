@@ -9,6 +9,12 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@chakra-ui/icons": "v2-latest",
+    "@chakra-ui/next-js": "v2-latest",
+    "@chakra-ui/react": "v2-latest",
+    "@emotion/react": "11.13.5",
+    "@emotion/styled": "11.13.5",
+    "framer-motion": "11.13.1",
     "next": "15.0.3",
     "react": "19.0.0-rc-66855b96-20241106",
     "react-dom": "19.0.0-rc-66855b96-20241106"
