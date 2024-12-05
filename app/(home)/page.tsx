@@ -1,6 +1,6 @@
 "use client"
 
-import { BeakerIcon } from "@heroicons/react/24/solid"
+import { BanknotesIcon } from "@heroicons/react/24/outline"
 
 import { Card } from "./components/card"
 import { Heading, Text } from "@chakra-ui/react"
@@ -20,16 +20,9 @@ export default function Home() {
         <ul className="grid grid-cols-2 gap-6">
           <li>
             <Card
-              icon={<BeakerIcon className="size-6 " />}
+              icon={<BanknotesIcon className="size-12 " />}
               term="React Server Actions con PostgresSQL"
-              desc="Lorem ipsum dotom sit amet"
-            ></Card>
-          </li>
-          <li>
-            <Card
-              icon={<BeakerIcon className="size-6 " />}
-              term="Consumo de datos: Servidor"
-              desc="Lorem ipsum dotom sit amet"
+              desc="Explora una aplicación de manejo de gastos que lista, crea y elimina registros desde el servidor y una DB."
             ></Card>
           </li>
         </ul>
