@@ -1,4 +1,4 @@
-import { Heading } from "@chakra-ui/react"
+import { Heading, Text } from "@chakra-ui/react"
 import { HeartIcon } from "@heroicons/react/24/solid"
 
 import { orm } from "../db"
@@ -9,9 +9,14 @@ export default async function Bookmarks() {
 
   return (
     <main className="container mx-auto px-4 my-16 space-y-4">
-      <Heading size="lg" className="mb-1">
-        Marcadores
-      </Heading>
+      <header>
+        <Heading size="lg" className="mb-1">
+          Marcadores
+        </Heading>
+        <Text>
+          Estrategías de consumo de datos desde el servidor y el cliente
+        </Text>
+      </header>
 
       <ul>
         {bookmarks.map((bookmark) => (

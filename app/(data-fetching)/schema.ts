@@ -13,3 +13,5 @@ export const bookmarks = pgTable("bookmarks", {
   fav: boolean("fav").default(false),
   createdAt: timestamp("created_at").defaultNow(),
 })
+
+export type BookmarkType = typeof bookmarks.$inferInsert

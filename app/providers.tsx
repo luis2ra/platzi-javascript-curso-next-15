@@ -1,9 +1,13 @@
 "use client"
+
 import {
   ChakraProvider,
   createLocalStorageManager,
   extendTheme,
 } from "@chakra-ui/react"
+import { QueryClientProvider } from "@tanstack/react-query"
+
+import { getQueryClient } from "./queries"
 
 // Custom Chakra-UI color manager to ignores localStorage color config
 const dummyColorStorageManager = createLocalStorageManager(
@@ -21,9 +25,13 @@ export const theme = extendTheme({
 })
 
 export function Providers({ children }: { children: React.ReactNode }) {
+  const queryClient = getQueryClient()
+
   return (
-    <ChakraProvider theme={theme} colorModeManager={dummyColorStorageManager}>
-      {children}
-    </ChakraProvider>
+    <QueryClientProvider client={queryClient}>
+      <ChakraProvider theme={theme} colorModeManager={dummyColorStorageManager}>
+        {children}
+      </ChakraProvider>
+    </QueryClientProvider>
   )
 }
