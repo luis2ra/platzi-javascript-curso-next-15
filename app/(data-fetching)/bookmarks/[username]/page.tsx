@@ -1,9 +1,11 @@
+import { Suspense } from "react"
 import Image from "next/image"
 
 import { Heading, Text } from "@chakra-ui/react"
 
 import { orm } from "../../db"
 import { Bookmark } from "../components/Bookmark"
+import Loading from "./loading"
 import { isInWhitelist } from "../utils/whitelist"
 
 export default async function Author({
@@ -51,7 +53,9 @@ export default async function Author({
       <Heading size="lg" className="mb-1 mt-8">
         Marcadores
       </Heading>
-      {isWhitelisted && <AuthorBookmarksById authorId={author.id} />}
+      <Suspense fallback={<Loading />}>
+        {isWhitelisted && <AuthorBookmarksById authorId={author.id} />}
+      </Suspense>
     </main>
   )
 }
