@@ -6,7 +6,11 @@
     "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "bookmarks:db:studio": "drizzle-kit studio",
+    "bookmarks:db:push": "drizzle-kit push",
+    "bookmarks:db:generate": "drizzle-kit generate",
+    "bookmarks:db:migrate": "drizzle-kit migrate"
   },
   "dependencies": {
     "@chakra-ui/icons": "v2-latest",
@@ -16,6 +20,8 @@
     "@emotion/styled": "11.13.5",
     "@heroicons/react": "^2.2.0",
     "dotenv": "^16.4.7",
+    "drizzle-kit": "^0.29.1",
+    "drizzle-orm": "^0.37.0",
     "framer-motion": "11.13.1",
     "next": "15.0.3",
     "postgres": "^3.4.5",
