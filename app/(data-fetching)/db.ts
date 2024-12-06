@@ -2,6 +2,7 @@ import { drizzle } from "drizzle-orm/postgres-js"
 import postgres from "postgres"
 
 import dotenv from "dotenv"
+import * as schema from "./schema"
 
 dotenv.config()
 
@@ -12,4 +13,6 @@ if (!process.env.POSTGRESQL_ENDPOINT) {
 
 export const client = postgres(process.env.POSTGRESQL_ENDPOINT)
 
-export const orm = drizzle(client)
+export const orm = drizzle(client, {
+  schema,
+})

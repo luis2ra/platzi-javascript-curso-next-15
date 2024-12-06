@@ -1,9 +1,27 @@
 import "dotenv/config"
-import { bookmarks } from "./schema"
+import {
+  bookmarks,
+  authors,
+  type BookmarkType,
+  type AuthorType,
+} from "./schema"
 
 import { orm } from "./db"
 
-const BOOKMARKS = [
+const AUTHORS: AuthorType[] = [
+  {
+    username: "platzi",
+    name: "Platzi Team",
+    avatarUrl: "/assets/platzi-isotipo.webp",
+  },
+  {
+    username: "jonalvarezz",
+    name: "Jona Alvarezz",
+    avatarUrl: "/assets/squid.png",
+  },
+]
+
+const BOOKMARKS: BookmarkType[] = [
   { title: "Platzi", url: "https://platzi.com", fav: true },
   { title: "jonalvarezz", url: "https://jonalvarezz.com", fav: true },
   {
@@ -35,9 +53,21 @@ const BOOKMARKS = [
 ]
 
 async function main() {
-  console.log(`🚀 Inserting ${BOOKMARKS.length} bookmarks...`)
-  await orm.insert(bookmarks).values(BOOKMARKS)
+  console.log(`🚀 Inserting ${AUTHORS.length} authors...`)
+  const insertedAuthors = await orm.insert(authors).values(AUTHORS).returning()
+  const authorsLength = insertedAuthors.length
+
+  const bookmarksWithAuthors = BOOKMARKS.map((bookmark, index) =>
+    Object.assign({}, bookmark, {
+      authorId: insertedAuthors[index % authorsLength].id,
+    }),
+  )
+
+  console.log(`🚀 Inserting ${bookmarksWithAuthors.length} bookmarks...`)
+  await orm.insert(bookmarks).values(bookmarksWithAuthors)
   console.log("✨ Done!")
+
+  process.exit()
 }
 
 main()
