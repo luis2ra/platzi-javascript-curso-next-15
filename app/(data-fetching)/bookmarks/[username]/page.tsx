@@ -1,0 +1,87 @@
+import Image from "next/image"
+
+import { Heading, Text } from "@chakra-ui/react"
+
+import { orm } from "../../db"
+import { Bookmark } from "../components/Bookmark"
+import { isInWhitelist } from "../utils/whitelist"
+
+export default async function Author({
+  params,
+}: {
+  params: Promise<{ username: string }>
+}) {
+  const { username } = await params
+
+  const author = await getAuthor(username)
+
+  if (!author) {
+    return null
+  }
+
+  preload(author.id)
+
+  const isWhitelisted = await isInWhitelist(author)
+
+  return (
+    <main className="container mx-auto px-4 my-16">
+      <header>
+        <figure className="pl-4 pr-8 py-6 border-2 inline-flex items-center">
+          <div className="rounded-full border inline-block mr-4">
+            <Image
+              src={author.avatarUrl!}
+              alt={author.name!}
+              width="60"
+              height="60"
+            />
+          </div>
+          <figcaption>
+            <Heading size="lg" className="">
+              {author.name}
+            </Heading>
+            <Heading as="p" size="md" className="" color="gray.500">
+              {author.username}
+            </Heading>
+          </figcaption>
+        </figure>
+      </header>
+
+      <Text className="mt-4">Patrones de consumo de datos usando promesas</Text>
+
+      <Heading size="lg" className="mb-1 mt-8">
+        Marcadores
+      </Heading>
+      {isWhitelisted && <AuthorBookmarksById authorId={author.id} />}
+    </main>
+  )
+}
+
+async function AuthorBookmarksById(props: { authorId: number }) {
+  const bookmarks = await getBookmarksByAuthorId(props.authorId)
+
+  return (
+    <ul>
+      {bookmarks?.map((bookmark) => (
+        <li className="border-b-2 py-4 px-6" key={bookmark.id}>
+          <Bookmark {...bookmark} />
+        </li>
+      ))}
+    </ul>
+  )
+}
+
+async function getBookmarksByAuthorId(authorId: number) {
+  return orm.query.bookmarks.findMany({
+    where: (entry, { eq }) => eq(entry.authorId, authorId),
+  })
+}
+
+async function getAuthor(username: string) {
+  return orm.query.authors.findFirst({
+    where: (entry, { eq }) => eq(entry.username, username),
+  })
+}
+
+function preload(authorId: number) {
+  void getBookmarksByAuthorId(authorId)
+}

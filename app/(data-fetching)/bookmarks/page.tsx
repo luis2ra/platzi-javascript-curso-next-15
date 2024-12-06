@@ -1,7 +1,7 @@
 import { Heading, Text } from "@chakra-ui/react"
-import { HeartIcon } from "@heroicons/react/24/solid"
 
 import { orm } from "../db"
+import { Bookmark } from "./components/Bookmark"
 
 export default async function Bookmarks() {
   const bookmarks = await orm.query.bookmarks.findMany({
@@ -25,19 +25,7 @@ export default async function Bookmarks() {
       <ul>
         {bookmarks?.map((bookmark) => (
           <li className="border-b-2 py-4 px-6" key={bookmark.id}>
-            <div className=" flex items-center">
-              <HeartIcon
-                className={`w-5 h-5 mr-3 ${bookmark.fav ? "text-red-500" : "text-slate-300"}`}
-              />
-              <a
-                href={bookmark.url}
-                rel="noopener noreferrer"
-                target="_blank"
-                className="hover:underline"
-              >
-                {bookmark.title} - {bookmark.url}
-              </a>
-            </div>
+            <Bookmark {...bookmark} />
             <div className="my-1 text-gray-600 text-xs ml-7">
               Creado por {bookmark.author?.name || "Anónimo"}
             </div>
