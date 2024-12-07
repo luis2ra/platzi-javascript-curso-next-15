@@ -1,11 +1,39 @@
 import { NextRequest, NextResponse } from "next/server"
 
 import { getLocale, hasPathnameLocale } from "@/app/utils/i18n/get-locale"
+import { cookies } from "next/headers"
 
-export function middleware(request: NextRequest) {
+import {
+  isSessionValid,
+  COOKIE_NAME as SESSION_COOKIE_NAME,
+} from "@/app/utils/auth"
+
+export async function middleware(request: NextRequest) {
+  const { pathname } = request.nextUrl
+
+  // Auth
+  // -------------
+
+  // 1. Ignore todo lo que no sea de nuestra ruta /auth
+  if (pathname.startsWith("/auth") && pathname !== "/auth/login") {
+    const allCookies = await cookies()
+
+    // 2. Verificar si hay una cookie de sesión válida
+    const hasSession = await isSessionValid(
+      allCookies.get(SESSION_COOKIE_NAME)?.value,
+    )
+
+    // 3. Si la hay, puede continuar
+    if (hasSession) {
+      return
+    }
+
+    // 4. Si no, redireccionar a la página de inicio de sesión
+    return NextResponse.redirect(new URL("/auth/login", request.nextUrl))
+  }
+
   // I18n
   // -------------
-  const { pathname } = request.nextUrl
 
   // 1. Ignore todo lo que no sea de nuestra ruta /i18n
   if (!pathname.startsWith("/i18n")) return
