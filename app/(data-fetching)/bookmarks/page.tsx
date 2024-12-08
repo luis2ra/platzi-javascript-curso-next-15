@@ -17,7 +17,7 @@ export default function Bookmarks() {
   }, [])
 
   return (
-    <main className="container mx-auto px-4 my-16 space-y-4">
+    <main className="my-16 space-y-4">
       <header>
         <Heading size="lg" className="mb-1">
           Marcadores

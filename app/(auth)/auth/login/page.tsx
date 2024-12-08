@@ -24,7 +24,7 @@ export default function I18nPage() {
   const status = useFormStatus()
 
   return (
-    <main className="p-4 container mx-auto">
+    <main className="">
       <header className="my-10">
         <Heading as="h1" size="lg" className="">
           Login

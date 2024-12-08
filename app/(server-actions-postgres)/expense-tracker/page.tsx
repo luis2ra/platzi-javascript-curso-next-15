@@ -29,7 +29,7 @@ export default async function ExpenseTracker() {
   const total = await getMonthlyTotal()
 
   return (
-    <main className="container mx-auto px-4 my-16">
+    <main className="my-16">
       <Heading size="lg" className="mb-1">
         Manejo de Gastos
       </Heading>

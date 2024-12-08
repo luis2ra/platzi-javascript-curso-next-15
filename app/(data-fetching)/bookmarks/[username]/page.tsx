@@ -26,7 +26,7 @@ export default async function Author({
   const isWhitelisted = await isInWhitelist(author)
 
   return (
-    <main className="container mx-auto px-4 my-16">
+    <main className="my-10">
       <header>
         <figure className="pl-4 pr-8 py-6 border-2 inline-flex items-center">
           <div className="rounded-full border inline-block mr-4">

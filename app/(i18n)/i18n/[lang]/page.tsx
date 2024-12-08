@@ -12,7 +12,7 @@ export default async function I18nPage({
   const { t, f, d } = await getTranslations(lang)
 
   return (
-    <main className="p-4 container mx-auto">
+    <main className="">
       <header className="my-10">
         <Heading as="h1" size="lg" className="">
           {t("heading")}

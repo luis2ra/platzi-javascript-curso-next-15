@@ -3,6 +3,8 @@ import "./globals.css"
 import type { Metadata } from "next"
 import { PT_Serif } from "next/font/google"
 
+import { Breadcrumb } from "@/components/breadcrumb"
+
 import { Providers } from "./providers"
 
 export const metadata: Metadata = {
@@ -18,14 +20,16 @@ const font = PT_Serif({
   variable: "--font-app",
 })
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode
 }>) {
   return (
     <html lang="en" className={font.variable}>
-      <body className="">
+      <body className="py-4 px-4 max-w-6xl mx-auto">
+        <Breadcrumb />
+
         <Providers>{children}</Providers>
 
         <footer className="opacity-70 text-gray-600 text-xs mt-20 pb-8 text-center">

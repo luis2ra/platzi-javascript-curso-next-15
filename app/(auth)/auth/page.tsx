@@ -2,7 +2,7 @@ import { Heading, Text, Button } from "@chakra-ui/react"
 
 export default async function I18nPage() {
   return (
-    <main className="p-4 container mx-auto">
+    <main className="">
       <header className="my-10">
         <Heading as="h1" size="lg" className="">
           Autenticación
