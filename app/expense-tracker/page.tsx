@@ -37,7 +37,10 @@ export default async function ExpenseTracker() {
         Monthly Total: ${total}
       </Heading>
 
-      <Form action={addExpense} className="p-6 my-8 border-2 space-y-4">
+      <Form
+        action={addExpense}
+        className="p-6 my-12 border-2 space-y-4 max-w-lg mx-auto"
+      >
         <FormControl>
           <FormLabel>Nombre</FormLabel>
           <Input required name="name" />
