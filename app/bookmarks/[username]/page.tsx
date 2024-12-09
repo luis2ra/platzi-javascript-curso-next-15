@@ -3,7 +3,7 @@ import Image from "next/image"
 
 import { Heading, Text } from "@chakra-ui/react"
 
-import { Bookmark } from "@/components/Bookmark"
+import { Bookmark } from "@/components/bookmark"
 import { orm } from "../db"
 import { isInWhitelist } from "../utils/whitelist"
 import Loading from "./loading"
@@ -28,7 +28,10 @@ export default async function Author({
   return (
     <main className="my-10">
       <header>
-        <figure className="pl-4 pr-8 py-6 border-2 inline-flex items-center">
+        <Heading size="lg" className="mb-4">
+          Marcadores de:
+        </Heading>
+        <figure className="pl-4 pr-8 py-6 inline-flex items-center">
           <div className="rounded-full border inline-block mr-4">
             <Image
               src={author.avatarUrl!}
@@ -48,9 +51,9 @@ export default async function Author({
         </figure>
       </header>
 
-      <Text className="mt-4">Patrones de consumo de datos usando promesas</Text>
+      <Text className="mt-2">Patrones de consumo de datos usando promesas</Text>
 
-      <Heading size="lg" className="mb-1 mt-8">
+      <Heading size="lg" className="mb-1 mt-14">
         Marcadores
       </Heading>
       <Suspense fallback={<Loading />}>
@@ -64,9 +67,9 @@ async function AuthorBookmarksById(props: { authorId: number }) {
   const bookmarks = await getBookmarksByAuthorId(props.authorId)
 
   return (
-    <ul>
+    <ul className="mt-8 text-lg">
       {bookmarks?.map((bookmark) => (
-        <li className="border-b-2 py-4 px-6" key={bookmark.id}>
+        <li className="border-b-2 py-4 px-6 my-2" key={bookmark.id}>
           <Bookmark {...bookmark} />
         </li>
       ))}
