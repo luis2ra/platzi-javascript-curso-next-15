@@ -1,3 +1,4 @@
+import { LockOpenIcon } from "@heroicons/react/24/outline"
 import { Heading, Text, Button } from "@chakra-ui/react"
 
 export default async function I18nPage() {
@@ -12,8 +13,11 @@ export default async function I18nPage() {
         </Text>
       </header>
 
-      <div className="p-8 bg-yellow-100 max-w-xl mx-auto">
-        <Text fontSize="md">
+      <div className="p-8 bg-yellow-100 max-w-xl mx-auto text-center text-lg">
+        <div className="">
+          <LockOpenIcon className="h-10 w-10 mx-auto" />
+        </div>
+        <Text fontSize="md" className="mt-8">
           🎉 Felicidades, ahora puedes ver páginas y contenido protegido.
         </Text>
       </div>

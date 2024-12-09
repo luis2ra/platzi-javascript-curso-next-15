@@ -33,7 +33,7 @@ export function Breadcrumb({ className, children }: PropsWithChildren<Props>) {
           <span className="px-2">/</span>
           <Link
             href={"/" + paths.slice(0, index + 1).join("/")}
-            className="inline-flex items-center text-gray-400 hover:text-gray-500"
+            className="inline-flex items-center text-gray-400 hover:text-gray-500 capitalize"
           >
             <span>{path}</span>
           </Link>

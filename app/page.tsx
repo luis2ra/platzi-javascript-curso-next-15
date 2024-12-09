@@ -1,6 +1,6 @@
 import {
   BanknotesIcon,
-  ArrowsUpDownIcon,
+  BookmarkSquareIcon,
   BuildingStorefrontIcon,
   LanguageIcon,
   LockClosedIcon,
@@ -43,7 +43,7 @@ export default function Home() {
           <li>
             <Card
               to="/bookmarks"
-              icon={<ArrowsUpDownIcon className="size-12 " />}
+              icon={<BookmarkSquareIcon className="size-12 " />}
               term="Bookmarks"
               desc="Mini-aplicación de manejor de Marcadores para explorar las diferentes estrategías y patrones para consumir datos."
             ></Card>
