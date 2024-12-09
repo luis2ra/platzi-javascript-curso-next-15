@@ -1,5 +1,3 @@
-"use client"
-
 import {
   BanknotesIcon,
   ArrowsUpDownIcon,
@@ -9,6 +7,7 @@ import {
   BugAntIcon,
   AdjustmentsVerticalIcon,
 } from "@heroicons/react/24/outline"
+import Image from "next/image"
 
 import { Card } from "../components/card"
 import { Heading, Text } from "@chakra-ui/react"
@@ -16,15 +15,22 @@ import { Heading, Text } from "@chakra-ui/react"
 export default function Home() {
   return (
     <main className="">
-      <header className="text-center my-8">
-        <Heading as="h1" size="lg" className="my-4 max-w-80 mx-auto">
+      <header className="text-center my-4">
+        <Image
+          src="/assets/platzi-isotipo.webp"
+          alt="Platzi Logo"
+          className="mx-auto"
+          width="35"
+          height="35"
+        />
+        <Heading as="h1" size="lg" className="my-2 max-w-80 mx-auto">
           Curso de Platzi Avanzado de Next.js
         </Heading>
-        <Text fontSize="xs">
+        <Text fontSize="">
           En esta página encontrarás todos los materiales de este curso.
         </Text>
       </header>
-      <section className="my-8">
+      <section className="my-14">
         <ul className="grid sm:grid-cols-2 gap-6">
           <li>
             <Card
