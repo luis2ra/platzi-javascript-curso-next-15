@@ -3,10 +3,10 @@ import Image from "next/image"
 
 import { Heading, Text } from "@chakra-ui/react"
 
-import { orm } from "../../db"
-import { Bookmark } from "../components/Bookmark"
-import Loading from "./loading"
+import { Bookmark } from "@/components/Bookmark"
+import { orm } from "../db"
 import { isInWhitelist } from "../utils/whitelist"
+import Loading from "./loading"
 
 export default async function Author({
   params,

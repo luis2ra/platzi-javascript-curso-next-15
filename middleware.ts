@@ -1,12 +1,12 @@
 import { NextRequest, NextResponse } from "next/server"
 
-import { getLocale, hasPathnameLocale } from "@/app/utils/i18n/get-locale"
+import { getLocale, hasPathnameLocale } from "@/utils/i18n"
 import { cookies } from "next/headers"
 
 import {
   isSessionValid,
   COOKIE_NAME as SESSION_COOKIE_NAME,
-} from "@/app/utils/auth"
+} from "@/utils/auth"
 
 export async function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl

@@ -1,6 +1,6 @@
 "use server"
 
-import { createSession } from "@/app/utils/auth"
+import { createSession } from "@/utils/auth"
 import { createHash, randomUUID } from "crypto"
 import { redirect } from "next/navigation"
 

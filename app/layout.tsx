@@ -34,7 +34,7 @@ export default async function RootLayout({
 
         <footer className="opacity-70 text-gray-600 text-xs mt-20 pb-8 text-center">
           <p>
-            Made with 💚 by{" "}
+            Made with 💜 by{" "}
             <a
               href="https://platzi.com/profes/jonalvarezz/"
               target="_blank"

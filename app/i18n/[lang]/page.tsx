@@ -1,7 +1,7 @@
 import { Heading, Text } from "@chakra-ui/react"
 import { HeartIcon, ClockIcon } from "@heroicons/react/24/outline"
 
-import { getTranslations } from "../../translations/translate"
+import { getTranslations } from "../translations/translate"
 
 export default async function I18nPage({
   params,

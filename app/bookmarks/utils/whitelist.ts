@@ -1,5 +1,5 @@
-import { type AuthorType } from "../../schema"
-import { orm } from "../../db"
+import { type AuthorType } from "../schema"
+import { orm } from "../db"
 
 export async function isInWhitelist(author: AuthorType): Promise<boolean> {
   const bookmarks = await orm.query.bookmarks.findMany({

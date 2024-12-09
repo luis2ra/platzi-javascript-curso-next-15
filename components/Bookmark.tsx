@@ -1,5 +1,5 @@
 import { HeartIcon } from "@heroicons/react/24/solid"
-import type { BookmarkType } from "../../schema"
+import type { BookmarkType } from "../app/bookmarks/schema"
 
 export function Bookmark(bookmark: BookmarkType) {
   return (

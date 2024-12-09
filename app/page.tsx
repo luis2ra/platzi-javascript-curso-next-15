@@ -7,7 +7,7 @@ import {
   LanguageIcon,
 } from "@heroicons/react/24/outline"
 
-import { Card } from "./components/card"
+import { Card } from "../components/card"
 import { Heading, Text } from "@chakra-ui/react"
 
 export default function Home() {

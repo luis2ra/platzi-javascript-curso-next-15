@@ -4,8 +4,8 @@ import { useEffect, useState } from "react"
 
 import { Heading, Text } from "@chakra-ui/react"
 
-import { BookmarkType } from "../schema"
-import { Bookmark } from "./components/Bookmark"
+import { Bookmark } from "@/components/Bookmark"
+import { BookmarkType } from "./schema"
 
 export default function Bookmarks() {
   const [bookmarks, setBookmarks] = useState<BookmarkType[]>([])

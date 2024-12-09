@@ -1,7 +1,7 @@
 "use server"
 
 import { revalidatePath } from "next/cache"
-import { sql } from "../db"
+import { sql } from "./db"
 
 type Expense = {
   id: string
