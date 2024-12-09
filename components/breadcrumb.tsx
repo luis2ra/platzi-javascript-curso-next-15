@@ -15,8 +15,10 @@ export function Breadcrumb({ className, children }: PropsWithChildren<Props>) {
 
   if (pathname === "/") return null
 
+  const paths = pathname.split("/").filter(Boolean)
+
   return (
-    <div className={`py-4 my-6 ${className}`}>
+    <div className={`flex items-center py-4 my-6 ${className}`}>
       <Link
         href="/"
         className="inline-flex items-center text-gray-400 hover:text-gray-500"
@@ -26,6 +28,17 @@ export function Breadcrumb({ className, children }: PropsWithChildren<Props>) {
         </span>
         <span>{children || "Volver al inicio"}</span>
       </Link>
+      {paths.map((path, index) => (
+        <>
+          <span className="px-2">/</span>
+          <Link
+            href={"/" + paths.slice(0, index + 1).join("/")}
+            className="inline-flex items-center text-gray-400 hover:text-gray-500"
+          >
+            <span>{path}</span>
+          </Link>
+        </>
+      ))}
     </div>
   )
 }
