@@ -12,11 +12,15 @@ export default async function I18nPage() {
         </Text>
       </header>
 
-      <Text fontSize="md">
-        Para acceder a esta página, necesitas estar autenticado.
-      </Text>
+      <div className="p-8 bg-yellow-100 max-w-xl mx-auto">
+        <Text fontSize="md">
+          🎉 Felicidades, ahora puedes ver páginas y contenido protegido.
+        </Text>
+      </div>
 
-      <Button className="mt-10">Salir</Button>
+      <div className="text-center">
+        <Button className="mt-10">Salir</Button>
+      </div>
     </main>
   )
 }
