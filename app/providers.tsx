@@ -22,6 +22,19 @@ export const theme = extendTheme({
     heading: "var(--font-app)",
     body: "var(--font-app)",
   },
+  components: {
+    Button: {
+      defaultProps: {
+        variant: "solid",
+        colorScheme: "purple",
+      },
+      variants: {
+        outline: {
+          borderColor: "current",
+        },
+      },
+    },
+  },
 })
 
 export function Providers({ children }: { children: React.ReactNode }) {

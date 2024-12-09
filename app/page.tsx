@@ -5,6 +5,9 @@ import {
   ArrowsUpDownIcon,
   BuildingStorefrontIcon,
   LanguageIcon,
+  LockClosedIcon,
+  BugAntIcon,
+  AdjustmentsVerticalIcon,
 } from "@heroicons/react/24/outline"
 
 import { Card } from "../components/card"
@@ -22,23 +25,26 @@ export default function Home() {
         </Text>
       </header>
       <section className="my-8">
-        <ul className="grid grid-cols-2 gap-6">
+        <ul className="grid sm:grid-cols-2 gap-6">
           <li>
             <Card
+              to="/expense-tracker"
               icon={<BanknotesIcon className="size-12 " />}
-              term="React Server Actions con PostgresSQL"
-              desc="Explora una aplicación de manejo de gastos que lista, crea y elimina registros desde el servidor y una DB."
+              term="Expense Tracker"
+              desc="Explora una mini-aplicación de manejo de gastos que lista, crea y elimina registros desde el servidor y una DB."
             ></Card>
           </li>
           <li>
             <Card
+              to="/bookmarks"
               icon={<ArrowsUpDownIcon className="size-12 " />}
-              term="Consumo de datos"
-              desc="Aplicación de manejor de Marcadores (Bookmarks) para explorar las diferentes estrategías y patrones para consumir datos."
+              term="Bookmarks"
+              desc="Mini-aplicación de manejor de Marcadores para explorar las diferentes estrategías y patrones para consumir datos."
             ></Card>
           </li>
           <li>
             <Card
+              to="/i18n"
               icon={<LanguageIcon className="size-12 " />}
               term="Internacionalización"
               desc="Identifica las opciones de la nueva versión para crear sitios amigables a locales y diccionarios de traducciones."
@@ -46,6 +52,31 @@ export default function Home() {
           </li>
           <li>
             <Card
+              to="/auth"
+              icon={<LockClosedIcon className="size-12 " />}
+              term="Autenticación"
+              desc="Explora Next.js Middleware para controlar el acceso a las rutas según los permisos del usuario."
+            ></Card>
+          </li>
+          <li>
+            <Card
+              to="/feature-flags"
+              icon={<AdjustmentsVerticalIcon className="size-12 " />}
+              term="Feature flags"
+              desc="Conoce y opera feature flags desde LaunchDarkly para realizar pruebas de segmentación en tu app."
+            ></Card>
+          </li>
+          <li>
+            <Card
+              to="/error-boundaries"
+              icon={<BugAntIcon className="size-12 " />}
+              term="Error boundaries"
+              desc="Utiliza error boundaries de Next.js para controlar los errores que puedan surgir en tu app y reportar a Sentry"
+            ></Card>
+          </li>
+          <li className="col-span-2">
+            <Card
+              to="/deploy"
               icon={<BuildingStorefrontIcon className="size-12 " />}
               term="Deploy"
               desc="Aprende a correr tu aplicación de Next.js 15 en tanto en servidores autogestionados como Cloudflare como en propios."
