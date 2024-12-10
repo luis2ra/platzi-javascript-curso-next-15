@@ -1,7 +1,7 @@
 "use client"
 
 import Link from "next/link"
-import { PropsWithChildren } from "react"
+import { Fragment, type PropsWithChildren } from "react"
 
 import { HomeIcon } from "@heroicons/react/24/solid"
 import { usePathname } from "next/navigation"
@@ -29,7 +29,7 @@ export function Breadcrumb({ className, children }: PropsWithChildren<Props>) {
         <span>{children || "Volver al inicio"}</span>
       </Link>
       {paths.map((path, index) => (
-        <>
+        <Fragment key={`${path}-${index}`}>
           <span className="px-2">/</span>
           <Link
             href={"/" + paths.slice(0, index + 1).join("/")}
@@ -37,7 +37,7 @@ export function Breadcrumb({ className, children }: PropsWithChildren<Props>) {
           >
             <span>{path}</span>
           </Link>
-        </>
+        </Fragment>
       ))}
     </div>
   )
