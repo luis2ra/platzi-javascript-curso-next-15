@@ -11,7 +11,10 @@ export default function Bookmarks() {
   const [bookmarks, setBookmarks] = useState<BookmarkType[]>([])
 
   useEffect(() => {
-    fetch("/bookmarks/api")
+    fetch("/bookmarks/api", {
+      cache: "force-cache",
+      next: { tags: ["bookmarks"] },
+    })
       .then((response) => response.json() as Promise<{ data: BookmarkType[] }>)
       .then(({ data }) => setBookmarks(data))
   }, [])

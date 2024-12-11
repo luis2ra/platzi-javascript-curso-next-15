@@ -8,8 +8,8 @@ const context = {
   key: "feature-flags",
 }
 
-export const dynamic = "force-dynamic"
-// export const revalidate = 10 // 1min
+export const dynamic = "force-dynamic" // 'auto' | 'force-dynamic' | 'error' | 'force-static'
+// export const revalidate = 10 // false, Infinity, number
 
 export default async function FeatureFlags() {
   const client = await getClient()
