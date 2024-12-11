@@ -74,7 +74,7 @@ export default function Home() {
           </li>
           <li>
             <Card
-              to="/error-boundaries"
+              to="/bookmarks/add"
               icon={<BugAntIcon className="size-12 " />}
               term="Error boundaries"
               desc="Utiliza error boundaries de Next.js para controlar los errores que puedan surgir en tu app y reportar a Sentry"
