@@ -10,6 +10,7 @@ import {
 
 export async function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl
+  const response = generateCSP(request)
 
   // Auth
   // -------------
@@ -25,7 +26,7 @@ export async function middleware(request: NextRequest) {
 
     // 3. Si la hay, puede continuar
     if (hasSession) {
-      return
+      return response
     }
 
     // 4. Si no, redireccionar a la página de inicio de sesión
@@ -36,12 +37,12 @@ export async function middleware(request: NextRequest) {
   // -------------
 
   // 1. Ignore todo lo que no sea de nuestra ruta /i18n
-  if (!pathname.startsWith("/i18n")) return
+  if (!pathname.startsWith("/i18n")) return response
 
   // 2. Si el path ya contiene un local, ignorelo (ya esta ok)
   //    e.j.: /i18n/es
   const hasLocal = hasPathnameLocale(pathname)
-  if (hasLocal) return
+  if (hasLocal) return response
 
   // 3. Si no hay local, agregar el local a la URL
   //    e.j.: /i18n -> /i18n/es
@@ -60,4 +61,40 @@ export const config = {
     // Optional: only run on root (/) URL
     // '/'
   ],
+}
+
+function generateCSP(request: NextRequest): NextResponse {
+  const nonce = Buffer.from(crypto.randomUUID()).toString("base64")
+  const cspHeader = `
+    script-src 'self' 'nonce-${nonce}' 'strict-dynamic';
+    object-src 'none';
+    base-uri 'self';
+    form-action 'self';
+    frame-ancestors 'none';
+    upgrade-insecure-requests;
+`
+  // Replace newline characters and spaces
+  const contentSecurityPolicyHeaderValue = cspHeader
+    .replace(/\s{2,}/g, " ")
+    .trim()
+
+  const requestHeaders = new Headers(request.headers)
+  requestHeaders.set("x-nonce", nonce)
+
+  requestHeaders.set(
+    "Content-Security-Policy",
+    contentSecurityPolicyHeaderValue,
+  )
+
+  const response = NextResponse.next({
+    request: {
+      headers: requestHeaders,
+    },
+  })
+  response.headers.set(
+    "Content-Security-Policy",
+    contentSecurityPolicyHeaderValue,
+  )
+
+  return response
 }
