@@ -1,11 +1,17 @@
 import { withSentryConfig } from "@sentry/nextjs"
+import bunbleAnalyzer from "@next/bundle-analyzer"
+
 import type { NextConfig } from "next"
 
 const enableSentry = Boolean(process.env.SENTRY_DSN)
 
-const nextConfig: NextConfig = {
+const withBundleAnalyzer = bunbleAnalyzer({
+  enabled: process.env.BUNDLE_ANALYZE === "true",
+})
+
+const nextConfig: NextConfig = withBundleAnalyzer({
   /* config options here */
-}
+})
 
 const getSentryConfig = () =>
   withSentryConfig(nextConfig, {
