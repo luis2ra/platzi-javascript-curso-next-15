@@ -12,7 +12,6 @@ export default function Bookmarks() {
 
   useEffect(() => {
     fetch("/bookmarks/api", {
-      cache: "force-cache",
       next: { tags: ["bookmarks"] },
     })
       .then((response) => response.json() as Promise<{ data: BookmarkType[] }>)

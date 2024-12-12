@@ -31,6 +31,9 @@ const getSentryConfig = () =>
     hideSourceMaps: true,
     disableLogger: true,
     automaticVercelMonitors: false,
+    sourcemaps: {
+      deleteSourcemapsAfterUpload: true,
+    },
   })
 
 const CONFIG = enableSentry ? getSentryConfig() : nextConfig
